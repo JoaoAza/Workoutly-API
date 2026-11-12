@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <!-- Figma Workoutly, frames 5:2, 5:3 e 5:4. -->
+    <Color x:Key="Canvas">#0A0A0A</Color>
+    <Color x:Key="Surface">#161B17</Color>
+    <Color x:Key="SurfaceRaised">#202722</Color>
+    <Color x:Key="Outline">#2B332D</Color>
+    <Color x:Key="CardOutline">#314033</Color>
+    <Color x:Key="Accent">#C5F67A</Color>
+    <Color x:Key="Mint">#4BD9C7</Color>
+    <Color x:Key="TextPrimary">#F5F5F5</Color>
+    <Color x:Key="TextSecondary">#A7B0A8</Color>
+    <Color x:Key="TextField">#DCE3DD</Color>
+    <Color x:Key="Error">#FDA4AF</Color>
+</ResourceDictionary>

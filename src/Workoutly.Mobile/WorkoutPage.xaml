@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workoutly.Mobile.WorkoutPage" Title="Treino em andamento">
+    <Grid RowDefinitions="Auto,*" Padding="20,12" RowSpacing="12">
+        <VerticalStackLayout Spacing="4">
+            <Label Text="TREINO EM ANDAMENTO" Style="{StaticResource Eyebrow}" />
+            <Label x:Name="PlanName" Style="{StaticResource PageTitle}" />
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <Label Text="Duração" Style="{StaticResource SecondaryText}" VerticalOptions="Center" />
+                <Label Grid.Column="1" x:Name="DurationText" Text="00:00:00" FontFamily="InterSemiBold" FontSize="24" TextColor="{StaticResource Accent}" AutomationId="workout_duration" />
+            </Grid>
+        </VerticalStackLayout>
+        <ScrollView Grid.Row="1" x:Name="PageScroll">
+            <VerticalStackLayout Spacing="14" Padding="0,0,0,20">
+                <VerticalStackLayout x:Name="Form" Spacing="14">
+                    <Label Text="Preencha repetições e carga de cada série realizada e marque Feita. Para peso corporal, informe 0 kg. Séries vazias e não marcadas ficam de fora." Style="{StaticResource SecondaryText}" />
+                    <Label x:Name="PlanNotes" Style="{StaticResource SecondaryText}" IsVisible="False" />
+                    <VerticalStackLayout x:Name="ExercisesPanel" Spacing="14" />
+                    <Border Style="{StaticResource InputBorder}">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Observações do treino (opcional)" Style="{StaticResource FieldLabel}" />
+                            <Editor x:Name="NotesEntry" Placeholder="Como foi o treino?" MaxLength="1000" MinimumHeightRequest="65" AutoSize="TextChanges" AutomationId="workout_notes" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+                <Label x:Name="CompletedText" Text="Nenhuma série marcada" Style="{StaticResource SecondaryText}" AutomationId="workout_completed" />
+                <Label x:Name="PendingText" Text="O treino foi concluído nesta tela. Confira a conexão e tente salvar novamente; os dados e a duração serão mantidos." Style="{StaticResource SecondaryText}" IsVisible="False" />
+                <ActivityIndicator x:Name="Loading" IsVisible="False" />
+                <Label x:Name="ErrorText" TextColor="{StaticResource Error}" IsVisible="False" AutomationId="workout_error" />
+                <Button x:Name="SaveButton" Text="Concluir e salvar treino" Clicked="OnSave" AutomationId="workout_save" />
+                <Button x:Name="SavedWorkoutsButton" Text="Conferir treinos salvos" Clicked="OnSavedWorkouts" Style="{StaticResource SecondaryButton}" IsVisible="False" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

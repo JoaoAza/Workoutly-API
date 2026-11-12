@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:services="clr-namespace:Workoutly.Mobile.Services" x:Class="Workoutly.Mobile.ConnectionsPage" Title="Acompanhamento">
+    <Grid Padding="20,16" RowDefinitions="Auto,Auto,*" RowSpacing="16">
+        <VerticalStackLayout Spacing="6">
+            <Label Text="ACOMPANHAMENTO" Style="{StaticResource Eyebrow}" />
+            <Label x:Name="Heading" Text="Meu professor" Style="{StaticResource PageTitle}" />
+            <Label x:Name="Subtitle" Style="{StaticResource SecondaryText}" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1" Spacing="6">
+            <ActivityIndicator x:Name="Loading" IsVisible="False" />
+            <Label x:Name="ErrorText" TextColor="{StaticResource Error}" IsVisible="False" AutomationId="connections_error" />
+        </VerticalStackLayout>
+        <Grid Grid.Row="2" x:Name="TeacherPanel" RowDefinitions="Auto,Auto,*" RowSpacing="14" IsVisible="False">
+            <Border x:Name="InvitationCard" Style="{StaticResource SurfaceCard}" IsVisible="False">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="CÓDIGO DE VÍNCULO" Style="{StaticResource Eyebrow}" />
+                    <Label x:Name="InvitationCode" Text="Sem código ativo" FontFamily="InterBold" FontSize="24" TextColor="{StaticResource Accent}" AutomationId="teacher_invitation" />
+                    <Label x:Name="InvitationExpiry" Style="{StaticResource SecondaryText}" />
+                    <Button x:Name="GenerateButton" Text="Gerar código" Clicked="OnGenerate" AutomationId="teacher_generate_code" />
+                </VerticalStackLayout>
+            </Border>
+            <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <Label x:Name="StudentsCount" Text="Alunos vinculados" FontFamily="InterSemiBold" FontSize="17" VerticalOptions="Center" />
+                <Button Grid.Column="1" x:Name="RefreshButton" Text="Atualizar" Clicked="OnRefresh" Style="{StaticResource TextButton}" />
+            </Grid>
+            <CollectionView Grid.Row="2" x:Name="StudentsList" SelectionMode="None" AutomationId="teacher_students" IsVisible="False">
+                <CollectionView.EmptyView><Label Text="Nenhum aluno vinculado. Compartilhe seu código para começar." Style="{StaticResource SecondaryText}" /></CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="services:AccountProfile">
+                        <Border Style="{StaticResource SurfaceCard}" Margin="0,0,0,12">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="{Binding Name}" FontFamily="InterSemiBold" FontSize="18" />
+                                <Label Text="{Binding Email}" Style="{StaticResource SecondaryText}" LineBreakMode="CharacterWrap" />
+                                <Button Text="Fichas do aluno" CommandParameter="{Binding .}" Clicked="OnStudentPlans" Style="{StaticResource SecondaryButton}" />
+                                <Button Text="Histórico do aluno" CommandParameter="{Binding .}" Clicked="OnStudentHistory" Style="{StaticResource SecondaryButton}" />
+                                <Button Text="Remover vínculo" CommandParameter="{Binding Id}" Clicked="OnRemoveStudent" Style="{StaticResource TextButton}" TextColor="{StaticResource Mint}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <ScrollView Grid.Row="2" x:Name="StudentPanel" IsVisible="False">
+            <VerticalStackLayout Spacing="16">
+                <Border x:Name="CurrentTeacherCard" Style="{StaticResource SurfaceCard}" IsVisible="False">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="PROFESSOR VINCULADO" Style="{StaticResource Eyebrow}" />
+                        <Label x:Name="TeacherName" FontFamily="InterSemiBold" FontSize="20" AutomationId="linked_teacher_name" />
+                        <Label x:Name="TeacherEmail" Style="{StaticResource SecondaryText}" />
+                        <Button Text="Remover vínculo" Clicked="OnLeave" Style="{StaticResource SecondaryButton}" AutomationId="student_leave_teacher" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border x:Name="JoinCard" Style="{StaticResource SurfaceCard}" IsVisible="False">
+                    <VerticalStackLayout Spacing="14">
+                        <Label Text="Vincule seu professor" FontFamily="InterSemiBold" FontSize="20" />
+                        <Label Text="Peça o código de 12 caracteres ao seu professor. Ele poderá montar fichas e consultar seus treinos e indicadores enquanto o vínculo estiver ativo." Style="{StaticResource SecondaryText}" />
+                        <Border Style="{StaticResource InputBorder}">
+                            <VerticalStackLayout Spacing="0">
+                                <Label Text="Código do professor" Style="{StaticResource FieldLabel}" />
+                                <Entry x:Name="JoinCode" Placeholder="Ex.: A1B2C3D4E5F6" MaxLength="12" CharacterSpacing="2" AutomationId="student_teacher_code" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Button Text="Vincular professor" Clicked="OnJoin" AutomationId="student_join_teacher" />
+                    </VerticalStackLayout>
+                </Border>
+                <Button x:Name="StudentRefreshButton" Text="Atualizar" Clicked="OnRefresh" Style="{StaticResource TextButton}" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

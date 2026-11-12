@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workoutly.Mobile.ExercisePage" Title="Novo exercício">
+    <ScrollView x:Name="PageScroll">
+        <VerticalStackLayout Padding="20,16,20,24" Spacing="18" MaximumWidthRequest="560">
+            <VerticalStackLayout Spacing="6">
+                <Label Text="SEU CATÁLOGO" Style="{StaticResource Eyebrow}" />
+                <Label x:Name="Heading" Text="Novo exercício" Style="{StaticResource PageTitle}" />
+                <Label x:Name="OriginText" Text="Um movimento só seu, organizado do seu jeito." Style="{StaticResource SecondaryText}" />
+            </VerticalStackLayout>
+            <Border x:Name="IllustrationCard" IsVisible="False" Style="{StaticResource SurfaceCard}" BackgroundColor="{StaticResource SurfaceRaised}" Padding="12">
+                <VerticalStackLayout Spacing="8">
+                    <Image x:Name="ExerciseIllustration" HeightRequest="230" Aspect="AspectFit" />
+                    <Label Text="Créditos e licenças" TextColor="{StaticResource Mint}" FontSize="12" TextDecorations="Underline" HorizontalOptions="Center" AutomationId="exercise_illustration_license">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOpenIllustrationLicense" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </VerticalStackLayout>
+            </Border>
+            <Border x:Name="InstructionCard" IsVisible="False" Style="{StaticResource SurfaceCard}" Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="REFERÊNCIA RÁPIDA" Style="{StaticResource Eyebrow}" />
+                    <Label x:Name="InstructionText" Style="{StaticResource SecondaryText}" />
+                    <Label Text="Use como apoio visual; ajuste o movimento com orientação profissional." Style="{StaticResource SecondaryText}" FontSize="12" />
+                </VerticalStackLayout>
+            </Border>
+            <ActivityIndicator x:Name="Loading" IsVisible="False" />
+            <VerticalStackLayout x:Name="Fields" Spacing="12">
+                <Border Style="{StaticResource InputBorder}">
+                    <VerticalStackLayout Spacing="0">
+                        <Label Text="Nome" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="NameEntry" Placeholder="Ex.: Remada unilateral" MaxLength="120" AutomationId="exercise_name" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Style="{StaticResource InputBorder}">
+                    <VerticalStackLayout Spacing="0">
+                        <Label Text="Grupo muscular" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="GroupEntry" Placeholder="Ex.: Costas" MaxLength="60" AutomationId="exercise_group" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Style="{StaticResource InputBorder}">
+                    <VerticalStackLayout Spacing="0">
+                        <Label Text="Equipamento" Style="{StaticResource FieldLabel}" />
+                        <Entry x:Name="EquipmentEntry" Placeholder="Ex.: Halteres ou Peso corporal" MaxLength="80" AutomationId="exercise_equipment" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Style="{StaticResource InputBorder}" Padding="16,12">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Descrição (opcional)" Style="{StaticResource FieldLabel}" />
+                        <Editor x:Name="DescriptionEditor" Placeholder="Como você identifica esta variação?" MaxLength="1000" AutoSize="TextChanges" MinimumHeightRequest="90" AutomationId="exercise_description" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+            <Border x:Name="PrivacyNote" Style="{StaticResource SurfaceCard}" BackgroundColor="{StaticResource SurfaceRaised}" Padding="14">
+                <Label x:Name="PrivacyText" Text="Este exercício fica disponível somente na sua conta." TextColor="{StaticResource Mint}" FontSize="12" />
+            </Border>
+            <Label x:Name="ErrorText" TextColor="{StaticResource Error}" IsVisible="False" AutomationId="exercise_form_error" />
+            <Button x:Name="SaveButton" Text="Salvar exercício" Clicked="OnSave" AutomationId="exercise_save" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

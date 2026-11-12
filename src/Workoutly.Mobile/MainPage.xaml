@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workoutly.Mobile.MainPage" Title="Workoutly" Shell.NavBarIsVisible="False">
+    <ScrollView x:Name="PageScroll">
+        <Grid Padding="24,24" RowDefinitions="Auto,*,Auto" RowSpacing="18" MaximumWidthRequest="560"
+              MinimumHeightRequest="{Binding Height, Source={x:Reference PageScroll}}">
+            <VerticalStackLayout x:Name="Intro" Spacing="18">
+                <Grid ColumnDefinitions="*,Auto">
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Image Source="workoutly_logo.png" WidthRequest="42" HeightRequest="42" Aspect="AspectFit" SemanticProperties.Description="Marca Workoutly" />
+                        <Label Text="WORKOUTLY" FontFamily="InterBold" FontSize="16" CharacterSpacing="2" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <Button Grid.Column="1" x:Name="ConnectionButton" Text="Conexão" Clicked="OnConnection" Style="{StaticResource TextButton}" FontSize="11" Padding="4,0" />
+                </Grid>
+                <Label x:Name="Heading" Text="Treinos claros.&#10;Progresso visível." FontFamily="InterBold" FontSize="34"
+                       LineHeight="1.15" SemanticProperties.HeadingLevel="Level1" />
+                <Label x:Name="Subtitle" Text="Organize suas fichas e acompanhe sua evolução em um só lugar." FontSize="15"
+                       TextColor="{StaticResource TextSecondary}" LineHeight="1.4" />
+            </VerticalStackLayout>
+            <VerticalStackLayout x:Name="RoleChoicePanel" Grid.Row="1" Spacing="14">
+                <Label Text="Como deseja acessar?" FontFamily="InterBold" FontSize="24" SemanticProperties.HeadingLevel="Level2" />
+                <Label Text="Escolha seu perfil para entrar ou criar uma conta." Style="{StaticResource SecondaryText}" />
+                <Button Text="Acessar como aluno" Clicked="OnChooseStudent" HeightRequest="54" FontSize="16" AutomationId="choose_student" />
+                <Button Text="Acessar como professor" Clicked="OnChooseTeacher" HeightRequest="54" FontSize="16" Style="{StaticResource SecondaryButton}" AutomationId="choose_teacher" />
+            </VerticalStackLayout>
+            <Grid x:Name="AuthPanel" Grid.Row="1" RowDefinitions="Auto,*,Auto" RowSpacing="18" IsVisible="False">
+                <VerticalStackLayout Spacing="18">
+                    <Border x:Name="NamePanel" Style="{StaticResource InputBorder}" IsVisible="False">
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Nome" Style="{StaticResource FieldLabel}" />
+                            <Entry x:Name="NameEntry" Placeholder="Como você se chama?" MaxLength="120" AutomationId="account_name" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Style="{StaticResource InputBorder}">
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="E-mail" Style="{StaticResource FieldLabel}" />
+                            <Entry x:Name="EmailEntry" Placeholder="aluno@email.com" Keyboard="Email" MaxLength="254" AutomationId="account_email" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Style="{StaticResource InputBorder}">
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Senha" Style="{StaticResource FieldLabel}" />
+                            <Entry x:Name="PasswordEntry" Placeholder="Sua senha" IsPassword="True" MaxLength="128" AutomationId="account_password" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <VerticalStackLayout x:Name="ConfirmPanel" Spacing="8" IsVisible="False">
+                        <Border Style="{StaticResource InputBorder}">
+                            <VerticalStackLayout Spacing="0">
+                                <Label Text="Confirme a senha" Style="{StaticResource FieldLabel}" />
+                                <Entry x:Name="ConfirmEntry" Placeholder="Repita sua senha" IsPassword="True" MaxLength="128" AutomationId="account_confirm" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Label x:Name="RegisterHint" Style="{StaticResource SecondaryText}" />
+                    </VerticalStackLayout>
+                    <Border x:Name="ConnectionPanel" Style="{StaticResource InputBorder}" IsVisible="False">
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Endereço do serviço" Style="{StaticResource FieldLabel}" />
+                            <Entry x:Name="AddressEntry" Placeholder="https://seu-servidor" Keyboard="Url" AutomationId="account_server" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="2" Spacing="8" Margin="0,16,0,0">
+                    <Button x:Name="BackToRolesButton" Text="Trocar perfil" Clicked="OnBackToRoles" Style="{StaticResource TextButton}" HorizontalOptions="Start" Padding="0" />
+                    <Button x:Name="SubmitButton" Text="Entrar" Clicked="OnSubmit" HeightRequest="54" FontSize="16" AutomationId="account_submit" />
+                    <Button x:Name="ToggleButton" Text="Ainda não tem conta?  Cadastre-se" Clicked="OnToggle" Style="{StaticResource TextButton}" HorizontalOptions="Start" Padding="0" />
+                </VerticalStackLayout>
+            </Grid>
+            <Grid x:Name="AccountPanel" Grid.RowSpan="2" RowDefinitions="Auto,Auto,Auto,Auto,Auto,*,Auto" RowSpacing="18" IsVisible="False">
+                <Grid ColumnDefinitions="*,46" ColumnSpacing="12" MinimumHeightRequest="62">
+                    <VerticalStackLayout Spacing="4" VerticalOptions="Center">
+                        <Label x:Name="Greeting" Style="{StaticResource SecondaryText}" FontSize="15" LineBreakMode="TailTruncation" />
+                        <Label x:Name="HomeTitle" Text="Pronto para treinar?" FontFamily="InterBold" FontSize="22" SemanticProperties.HeadingLevel="Level1" />
+                    </VerticalStackLayout>
+                    <Image Grid.Column="1" Source="figma_avatar.png" WidthRequest="46" HeightRequest="46" Aspect="AspectFit" VerticalOptions="Center" />
+                </Grid>
+                <Border Grid.Row="1" Style="{StaticResource SurfaceCard}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="ROTINA SEMANAL" Style="{StaticResource Eyebrow}" />
+                        <Label x:Name="PlansTitle" Text="Suas fichas de treino" FontFamily="InterSemiBold" FontSize="22" />
+                        <Label x:Name="PlansDescription" Text="Organize exercícios, séries e repetições para o próximo treino." Style="{StaticResource SecondaryText}" />
+                        <Button x:Name="PlansButton" Text="Minhas fichas" Clicked="OnPlans" AutomationId="open_plans" />
+                        <Button x:Name="WorkoutsButton" Text="Histórico e evolução" Clicked="OnWorkouts" Style="{StaticResource SecondaryButton}" AutomationId="open_workouts" IsVisible="False" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Row="2" Style="{StaticResource SurfaceCard}" Padding="20,22,20,20" MinimumHeightRequest="244">
+                    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="11">
+                        <Label Text="BIBLIOTECA DE EXERCÍCIOS" Style="{StaticResource Eyebrow}" FontSize="12" />
+                        <Label Grid.Row="1" Text="Explore os movimentos" FontFamily="InterBold" FontSize="26" />
+                        <Label Grid.Row="2" Text="Consulte o catálogo e adicione seus próprios exercícios." Style="{StaticResource SecondaryText}" FontSize="14" LineHeight="1.4" />
+                        <Button Grid.Row="4" x:Name="ExercisesButton" Text="Explorar exercícios" Clicked="OnExercises" HeightRequest="48" AutomationId="open_exercises" />
+                    </Grid>
+                </Border>
+                <Border Grid.Row="3" Style="{StaticResource SurfaceCard}">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="SUA CONTA" Style="{StaticResource Eyebrow}" />
+                        <Label x:Name="AccountName" FontFamily="InterSemiBold" FontSize="19" />
+                        <Label x:Name="AccountEmail" Style="{StaticResource SecondaryText}" LineBreakMode="CharacterWrap" />
+                        <Label x:Name="AccountRole" FontFamily="InterSemiBold" FontSize="12" TextColor="{StaticResource Mint}" AutomationId="account_role" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Row="4" Style="{StaticResource SurfaceCard}" BackgroundColor="{StaticResource SurfaceRaised}" Padding="16">
+                    <VerticalStackLayout Spacing="6">
+                        <Label x:Name="ConnectionsTitle" FontFamily="InterSemiBold" TextColor="{StaticResource Mint}" FontSize="13" />
+                        <Label x:Name="ConnectionsDescription" Style="{StaticResource SecondaryText}" />
+                        <Button x:Name="ConnectionsButton" Text="Meu professor" Clicked="OnConnections" Style="{StaticResource SecondaryButton}" AutomationId="open_connections" />
+                    </VerticalStackLayout>
+                </Border>
+                <Button Grid.Row="6" x:Name="LogoutButton" Text="Sair da conta" Clicked="OnLogout" Style="{StaticResource SecondaryButton}" />
+            </Grid>
+            <VerticalStackLayout Grid.Row="2" Spacing="8">
+                <ActivityIndicator x:Name="Loading" IsVisible="False" />
+                <Label x:Name="ErrorText" IsVisible="False" TextColor="{StaticResource Error}" AutomationId="account_error"
+                       Padding="0,4" />
+                <Button x:Name="RetryAccessButton" Text="Tentar recuperar acesso" Clicked="OnRetryAccess" IsVisible="False" Style="{StaticResource SecondaryButton}" AutomationId="account_retry" />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

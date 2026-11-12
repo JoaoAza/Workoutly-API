@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:services="clr-namespace:Workoutly.Mobile.Services" x:Class="Workoutly.Mobile.ExercisesPage" Title="Exercícios">
+    <Grid Padding="20,16,20,12" RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" RowSpacing="12">
+        <VerticalStackLayout Spacing="4">
+            <Label Text="BIBLIOTECA" Style="{StaticResource Eyebrow}" />
+            <Label Text="Seus exercícios" Style="{StaticResource PageTitle}" />
+            <Label Text="Encontre os movimentos da sua rotina." Style="{StaticResource SecondaryText}" />
+        </VerticalStackLayout>
+        <Border Grid.Row="1" Style="{StaticResource InputBorder}" MinimumHeightRequest="50" Padding="14,4">
+            <Entry x:Name="Search" Placeholder="Nome, grupo ou equipamento" ClearButtonVisibility="WhileEditing" TextChanged="OnSearch" AutomationId="exercise_search" />
+        </Border>
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="10">
+            <Button x:Name="CreateButton" Text="Novo exercício" Clicked="OnCreate" AutomationId="exercise_new" />
+            <Button Grid.Column="1" x:Name="RefreshButton" Text="Atualizar" Clicked="OnRefresh" Style="{StaticResource SecondaryButton}" />
+        </Grid>
+        <HorizontalStackLayout Grid.Row="3" Spacing="10">
+            <Switch x:Name="OnlyMine" Toggled="OnFilter" AutomationId="exercise_only_mine" />
+            <Label Text="Somente meus exercícios" Style="{StaticResource SecondaryText}" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <VerticalStackLayout Grid.Row="4" Spacing="6">
+            <ActivityIndicator x:Name="Loading" IsVisible="False" />
+            <Label x:Name="StatusText" Style="{StaticResource SecondaryText}" FontSize="12" />
+            <Label x:Name="ErrorText" TextColor="{StaticResource Error}" IsVisible="False" AutomationId="exercise_error" />
+        </VerticalStackLayout>
+        <CollectionView Grid.Row="5" x:Name="ExerciseList" SelectionMode="Single" SelectionChanged="OnSelected" AutomationId="exercise_list">
+            <CollectionView.EmptyView>
+                <Border Style="{StaticResource SurfaceCard}" Margin="0,8,0,0">
+                    <Label Text="Nenhum exercício encontrado. Ajuste a busca ou cadastre o seu." Style="{StaticResource SecondaryText}" />
+                </Border>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="services:ExerciseItem">
+                    <Border Style="{StaticResource SurfaceCard}" Margin="0,0,0,12">
+                        <Grid ColumnDefinitions="76,*" ColumnSpacing="12">
+                            <Image Source="{Binding ImageSource}" WidthRequest="76" HeightRequest="90" Aspect="AspectFit" />
+                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="10" ColumnSpacing="12">
+                            <Border BackgroundColor="{StaticResource SurfaceRaised}" StrokeThickness="0" StrokeShape="RoundRectangle 99" Padding="10,6" HorizontalOptions="Start">
+                                <Label Text="{Binding Origin}" FontFamily="InterSemiBold" FontSize="11" TextColor="{StaticResource Accent}" />
+                            </Border>
+                            <Label Grid.Row="1" Text="{Binding Name}" FontFamily="InterSemiBold" FontSize="19" />
+                            <Label Grid.Row="2" Text="{Binding Summary}" Style="{StaticResource SecondaryText}" />
+                            <Label Grid.RowSpan="3" Grid.Column="1" Text="›" TextColor="{StaticResource Mint}" FontSize="24" VerticalOptions="Center" />
+                        </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

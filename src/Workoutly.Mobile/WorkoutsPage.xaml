@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:services="clr-namespace:Workoutly.Mobile.Services" x:Class="Workoutly.Mobile.WorkoutsPage" Title="Histórico e evolução">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,16" Spacing="16" MaximumWidthRequest="600">
+            <VerticalStackLayout Spacing="5">
+                <Label Text="HISTÓRICO E EVOLUÇÃO" Style="{StaticResource Eyebrow}" />
+                <Label x:Name="Heading" Text="Seus treinos" Style="{StaticResource PageTitle}" />
+                <Label x:Name="Subtitle" Text="Acompanhe o que você realizou em cada período." Style="{StaticResource SecondaryText}" />
+            </VerticalStackLayout>
+            <Border Style="{StaticResource SurfaceCard}">
+                <VerticalStackLayout Spacing="12">
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="De" Style="{StaticResource FieldLabel}" />
+                            <DatePicker x:Name="FromDate" Format="dd/MM/yyyy" TextColor="{StaticResource TextPrimary}" FontFamily="InterMedium" DateSelected="OnPeriodChanged" AutomationId="history_from" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Até" Style="{StaticResource FieldLabel}" />
+                            <DatePicker x:Name="ToDate" Format="dd/MM/yyyy" TextColor="{StaticResource TextPrimary}" FontFamily="InterMedium" DateSelected="OnPeriodChanged" AutomationId="history_to" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Label x:Name="PeriodHint" Style="{StaticResource SecondaryText}" />
+                    <Button x:Name="RefreshButton" Text="Consultar período" Clicked="OnRefresh" Style="{StaticResource SecondaryButton}" />
+                </VerticalStackLayout>
+            </Border>
+            <ActivityIndicator x:Name="Loading" IsVisible="False" />
+            <Label x:Name="ErrorText" TextColor="{StaticResource Error}" IsVisible="False" AutomationId="history_error" />
+            <VerticalStackLayout x:Name="ResultPanel" Spacing="16" IsVisible="False">
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                    <Border Style="{StaticResource SurfaceCard}"><VerticalStackLayout Spacing="4">
+                        <Label Text="TREINOS" Style="{StaticResource Eyebrow}" />
+                        <Label x:Name="SessionCount" FontFamily="InterBold" FontSize="27" AutomationId="history_sessions" />
+                    </VerticalStackLayout></Border>
+                    <Border Grid.Column="1" Style="{StaticResource SurfaceCard}"><VerticalStackLayout Spacing="4">
+                        <Label Text="DIAS ATIVOS" Style="{StaticResource Eyebrow}" />
+                        <Label x:Name="ActiveDays" FontFamily="InterBold" FontSize="27" />
+                    </VerticalStackLayout></Border>
+                    <Border Grid.Row="1" Style="{StaticResource SurfaceCard}"><VerticalStackLayout Spacing="4">
+                        <Label Text="VOLUME DE CARGA" Style="{StaticResource Eyebrow}" />
+                        <Label x:Name="Volume" FontFamily="InterBold" FontSize="23" TextColor="{StaticResource Mint}" AutomationId="history_volume" />
+                    </VerticalStackLayout></Border>
+                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource SurfaceCard}"><VerticalStackLayout Spacing="4">
+                        <Label Text="SÉRIES" Style="{StaticResource Eyebrow}" />
+                        <Label x:Name="SetCount" FontFamily="InterBold" FontSize="27" />
+                    </VerticalStackLayout></Border>
+                </Grid>
+                <Label x:Name="TotalsText" Style="{StaticResource SecondaryText}" />
+                <Border Style="{StaticResource SurfaceCard}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Frequência no período" FontFamily="InterSemiBold" FontSize="19" />
+                        <Label Text="Cada treino salvo conta uma vez, mesmo com vários exercícios." Style="{StaticResource SecondaryText}" />
+                        <Label x:Name="FrequencyText" Style="{StaticResource SecondaryText}" AutomationId="history_frequency" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border x:Name="EvolutionCard" Style="{StaticResource SurfaceCard}" IsVisible="False">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Evolução de carga" FontFamily="InterSemiBold" FontSize="19" />
+                        <Picker x:Name="ExercisePicker" Title="Escolha um exercício" ItemDisplayBinding="{Binding Name, x:DataType=services:ExerciseEvolutionItem}" TextColor="{StaticResource TextPrimary}" TitleColor="{StaticResource TextSecondary}" SelectedIndexChanged="OnExerciseChanged" AutomationId="history_exercise" />
+                        <Label Text="Maior carga registrada em cada treino (kg). Compare também as repetições e o volume abaixo." Style="{StaticResource SecondaryText}" />
+                        <GraphicsView x:Name="LoadChart" HeightRequest="150" AutomationId="history_chart" />
+                        <Label x:Name="ChartCaption" Style="{StaticResource SecondaryText}" />
+                        <VerticalStackLayout x:Name="PointsPanel" Spacing="12" />
+                    </VerticalStackLayout>
+                </Border>
+                <Label Text="Treinos no período" FontFamily="InterSemiBold" FontSize="22" />
+                <Label x:Name="EmptyText" Text="Nenhum treino neste período. Escolha outras datas ou registre um treino em Minhas fichas." Style="{StaticResource SecondaryText}" IsVisible="False" />
+                <VerticalStackLayout x:Name="WorkoutsList" Spacing="12" AutomationId="saved_workouts">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="services:WorkoutSummaryItem">
+                            <Border Style="{StaticResource SurfaceCard}">
+                                <VerticalStackLayout Spacing="10">
+                                    <Label Text="{Binding DateLabel}" Style="{StaticResource Eyebrow}" />
+                                    <Label Text="{Binding PlanName}" FontFamily="InterSemiBold" FontSize="19" />
+                                    <Label Text="{Binding Summary}" Style="{StaticResource SecondaryText}" />
+                                    <Button Text="Ver treino" CommandParameter="{Binding Id}" Clicked="OnOpen" Style="{StaticResource SecondaryButton}" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

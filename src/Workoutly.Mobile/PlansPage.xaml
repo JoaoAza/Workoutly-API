@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Workoutly.Mobile" x:Name="PlansRoot" xmlns:services="clr-namespace:Workoutly.Mobile.Services" x:Class="Workoutly.Mobile.PlansPage" Title="Fichas">
+    <Grid Padding="20,16" RowDefinitions="Auto,Auto,Auto,*" RowSpacing="12">
+        <VerticalStackLayout Spacing="4">
+            <Label Text="ROTINA SEMANAL" Style="{StaticResource Eyebrow}" />
+            <Label x:Name="Heading" Text="Minhas fichas" Style="{StaticResource PageTitle}" />
+            <Label x:Name="Subtitle" Text="Organize os exercícios do seu próximo treino." Style="{StaticResource SecondaryText}" />
+        </VerticalStackLayout>
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+            <Button x:Name="CreateButton" Text="Nova ficha" Clicked="OnCreate" AutomationId="plan_create" />
+            <Button Grid.Column="1" x:Name="RefreshButton" Text="Atualizar" Clicked="OnRefresh" Style="{StaticResource TextButton}" />
+        </Grid>
+        <VerticalStackLayout Grid.Row="2" Spacing="6">
+            <ActivityIndicator x:Name="Loading" IsVisible="False" />
+            <Label x:Name="ListStatus" Style="{StaticResource SecondaryText}" />
+            <Label x:Name="ErrorText" TextColor="{StaticResource Error}" IsVisible="False" AutomationId="plans_error" />
+        </VerticalStackLayout>
+        <CollectionView Grid.Row="3" x:Name="PlansList" SelectionMode="None" AutomationId="plans_list">
+            <CollectionView.EmptyView><Label Text="Ainda não há fichas. Toque em Nova ficha para organizar o próximo treino." Style="{StaticResource SecondaryText}" /></CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="services:PlanItem">
+                    <Border Style="{StaticResource SurfaceCard}" Margin="0,0,0,12">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="FICHA DE TREINO" Style="{StaticResource Eyebrow}" />
+                            <Label Text="{Binding Name}" FontFamily="InterSemiBold" FontSize="19" />
+                            <Label Text="{Binding Notes}" Style="{StaticResource SecondaryText}" MaxLines="3" LineBreakMode="TailTruncation" />
+                            <Label Text="{Binding Summary}" Style="{StaticResource SecondaryText}" FontSize="12" />
+                            <Button Text="Iniciar treino" IsVisible="{Binding CanStartWorkout, Source={x:Reference PlansRoot}, x:DataType=local:PlansPage}" CommandParameter="{Binding .}" Clicked="OnStartWorkout" AutomationId="start_workout" />
+                            <Button Text="Abrir ficha" CommandParameter="{Binding .}" Clicked="OnOpen" Style="{StaticResource SecondaryButton}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

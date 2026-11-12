@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workoutly.Mobile.WorkoutEditPage" Title="Corrigir treino">
+    <ScrollView x:Name="PageScroll">
+        <VerticalStackLayout Padding="20,16" Spacing="14" MaximumWidthRequest="600">
+            <Label Text="CORRIGIR REGISTRO" Style="{StaticResource Eyebrow}" />
+            <Label x:Name="Heading" Style="{StaticResource PageTitle}" />
+            <Label x:Name="DateText" Style="{StaticResource SecondaryText}" />
+            <Label Text="Corrija somente o que foi realizado. Adicione uma série para registrar um exercício esquecido ou remova uma série incorreta." Style="{StaticResource SecondaryText}" />
+            <VerticalStackLayout x:Name="Form" Spacing="14">
+                <Label Text="Duração realizada" FontFamily="InterSemiBold" FontSize="18" />
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                    <Border Style="{StaticResource InputBorder}" Padding="10,6"><VerticalStackLayout><Label Text="Horas" Style="{StaticResource FieldLabel}" /><Entry x:Name="HoursEntry" Keyboard="Numeric" MaxLength="2" AutomationId="workout_edit_hours" /></VerticalStackLayout></Border>
+                    <Border Grid.Column="1" Style="{StaticResource InputBorder}" Padding="10,6"><VerticalStackLayout><Label Text="Minutos" Style="{StaticResource FieldLabel}" /><Entry x:Name="MinutesEntry" Keyboard="Numeric" MaxLength="2" AutomationId="workout_edit_minutes" /></VerticalStackLayout></Border>
+                    <Border Grid.Column="2" Style="{StaticResource InputBorder}" Padding="10,6"><VerticalStackLayout><Label Text="Segundos" Style="{StaticResource FieldLabel}" /><Entry x:Name="SecondsEntry" Keyboard="Numeric" MaxLength="2" AutomationId="workout_edit_seconds" /></VerticalStackLayout></Border>
+                </Grid>
+                <VerticalStackLayout x:Name="ExercisesPanel" Spacing="14" />
+                <Border Style="{StaticResource InputBorder}">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Observações do treino (opcional)" Style="{StaticResource FieldLabel}" />
+                        <Editor x:Name="NotesEntry" MaxLength="1000" MinimumHeightRequest="65" AutoSize="TextChanges" AutomationId="workout_edit_notes" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+            <ActivityIndicator x:Name="Loading" IsVisible="False" />
+            <Label x:Name="PendingText" Text="Ainda não confirmamos o envio. Seus campos estão preservados; tente salvar a mesma correção novamente ou recarregue o registro para conferir." Style="{StaticResource SecondaryText}" IsVisible="False" />
+            <Label x:Name="ErrorText" TextColor="{StaticResource Error}" IsVisible="False" AutomationId="workout_edit_error" />
+            <Button x:Name="SaveButton" Text="Salvar correção" Clicked="OnSave" AutomationId="workout_edit_save" />
+            <Button x:Name="ReloadButton" Text="Recarregar registro" Clicked="OnReload" Style="{StaticResource SecondaryButton}" AutomationId="workout_edit_reload" />
+            <Button x:Name="CancelButton" Text="Cancelar edição" Clicked="OnCancel" Style="{StaticResource TextButton}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

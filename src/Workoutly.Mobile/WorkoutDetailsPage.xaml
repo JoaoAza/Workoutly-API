@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workoutly.Mobile.WorkoutDetailsPage" Title="Detalhes do treino">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,16" Spacing="14" MaximumWidthRequest="600">
+            <Label Text="TREINO SALVO" Style="{StaticResource Eyebrow}" />
+            <Label x:Name="Heading" Text="Seu treino" Style="{StaticResource PageTitle}" />
+            <Button x:Name="RefreshButton" Text="Atualizar" Clicked="OnRefresh" Style="{StaticResource TextButton}" />
+            <Button x:Name="EditButton" Text="Corrigir treino" Clicked="OnEdit" IsVisible="False" AutomationId="workout_edit" />
+            <ActivityIndicator x:Name="Loading" IsVisible="False" />
+            <Label x:Name="ErrorText" TextColor="{StaticResource Error}" IsVisible="False" />
+            <VerticalStackLayout x:Name="DetailPanel" Spacing="14" IsVisible="False">
+                <Label x:Name="DateText" Style="{StaticResource SecondaryText}" />
+                <Label x:Name="SummaryText" FontFamily="InterSemiBold" TextColor="{StaticResource Mint}" AutomationId="workout_saved_summary" />
+                <Label x:Name="VolumeText" Style="{StaticResource SecondaryText}" AutomationId="workout_saved_volume" />
+                <Label x:Name="NotesText" Style="{StaticResource SecondaryText}" AutomationId="workout_saved_notes" />
+                <VerticalStackLayout x:Name="ExercisesPanel" Spacing="12" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
