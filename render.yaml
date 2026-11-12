@@ -1,0 +1,17 @@
+# Opcional: Blueprint para criar SOMENTE a API. Não cria outro banco.
+services:
+  - type: web
+    name: workoutly-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/ready
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: Hosting__RenderProxy
+        value: "true"
+      - key: DATABASE_URL
+        sync: false

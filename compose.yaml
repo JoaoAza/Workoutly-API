@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: workoutly
+      POSTGRES_USER: workoutly
+      POSTGRES_PASSWORD: ${WORKOUTLY_POSTGRES_PASSWORD:?Defina WORKOUTLY_POSTGRES_PASSWORD}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - workoutly_postgres:/var/lib/postgresql
+volumes:
+  workoutly_postgres:
