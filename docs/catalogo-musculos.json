@@ -1,0 +1,460 @@
+{
+  "reviewedAt": "2026-10-21",
+  "scope": "Variantes cadastradas no Workoutly; síntese anatômica educativa, sem prescrição individual ou ranking de hipertrofia.",
+  "sources": {
+    "squat": {
+      "title": "NASM — Biomechanics of the Squat",
+      "url": "https://www.nasm.org/resource-center/blog/training/biomechanics-of-the-squat"
+    },
+    "legpress": {
+      "title": "NASM — Leg Press",
+      "url": "https://www.nasm.org/resource-center/exercise-library/leg-press"
+    },
+    "extension": {
+      "title": "ACE — Muscles in Motion",
+      "url": "https://www.acefitness.org/fitness-certifications/ace-answers/exam-preparation-blog/3580/muscles-in-motion/"
+    },
+    "bench": {
+      "title": "NASM — Barbell Bench Press",
+      "url": "https://www.nasm.org/resource-center/exercise-library/barbell-bench-press"
+    },
+    "incline": {
+      "title": "NASM — Incline Barbell Bench Press",
+      "url": "https://www.nasm.org/resource-center/exercise-library/incline-barbell-bench-press"
+    },
+    "chest": {
+      "title": "ACE — Chest Day Champion",
+      "url": "https://www.acefitness.org/resources/pros/expert-articles/8972/be-a-chest-day-champion-an-evidence-based-approach-to-training-the-chest/"
+    },
+    "fly": {
+      "title": "ACE — Exercise Swaps: chest fly",
+      "url": "https://www.acefitness.org/resources/everyone/blog/5201/6-exercise-swaps-for-a-more-effective-workout/"
+    },
+    "pushup": {
+      "title": "NASM — Push-Up",
+      "url": "https://www.nasm.org/resource-center/exercise-library/push-up"
+    },
+    "rows": {
+      "title": "ACE — Back Exercise Study",
+      "url": "https://contentcdn.eacefitness.com/April2018/ACE_BackExerStudy.pdf"
+    },
+    "seatedrow": {
+      "title": "NASM — Seated Machine Row Close Grip",
+      "url": "https://www.nasm.org/resource-center/exercise-library/seated-machine-row-close-grip"
+    },
+    "pulldown": {
+      "title": "NASM — Biomechanics of the Lat Pulldown",
+      "url": "https://www.nasm.org/resource-center/blog/training/the-biomechanics-of-the-lat-pulldown-muscles-grip-and-form"
+    },
+    "pullup": {
+      "title": "NASM — Pull-Up",
+      "url": "https://www.nasm.org/resource-center/exercise-library/pull-up"
+    },
+    "shoulders": {
+      "title": "ACE — Dynamite Delts: pesquisa original",
+      "url": "https://www.acefitness.org/continuing-education/prosource/research-special-issue-2015/5320/dynamite-delts-ace-research-identifies-top-shoulder-exercises/"
+    },
+    "shouldermechanics": {
+      "title": "ACE — Muscle Mechanics: The Shoulders",
+      "url": "https://www.acefitness.org/continuing-education/certified/september-2025/8951/a-pro-s-guide-to-muscle-mechanics-the-shoulders/"
+    },
+    "arms": {
+      "title": "NASM — Arm Exercises and Muscle Functions",
+      "url": "https://blog.nasm.org/workout-plans/9-best-arm-exercises/"
+    },
+    "calf": {
+      "title": "AAOS — Foot and Ankle Conditioning: calf raises",
+      "url": "https://www.orthoinfo.org/recovery/foot-and-ankle-conditioning-program"
+    },
+    "seatedcalf": {
+      "title": "Maeo et al. — Standing versus seated calf-raise training",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10753835/"
+    },
+    "kneeflexion": {
+      "title": "Hali et al. — Knee position and triceps surae recruitment",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31292695/"
+    },
+    "deadlift": {
+      "title": "NASM — Barbell Deadlift",
+      "url": "https://www.nasm.org/resource-center/exercise-library/barbell-deadlift"
+    },
+    "rdl": {
+      "title": "NASM — Romanian Deadlift Barbell",
+      "url": "https://www.nasm.org/resource-center/exercise-library/romanian-deadlift-barbell"
+    },
+    "lyingcurl": {
+      "title": "NASM — Lying Leg Curl",
+      "url": "https://www.nasm.org/resource-center/exercise-library/lying-leg-curl"
+    },
+    "seatedcurl": {
+      "title": "NASM — Seated Leg Curl",
+      "url": "https://www.nasm.org/resource-center/exercise-library/seated-leg-curl"
+    },
+    "lunge": {
+      "title": "ACE — Lunge Variations",
+      "url": "https://www.acefitness.org/resources/everyone/blog/6971/5-lunge-variations-for-leaner-legs/"
+    },
+    "bulgarian": {
+      "title": "NASM — Bulgarian Split Squat",
+      "url": "https://www.nasm.org/resource-center/exercise-library/bulgarian-split-squat"
+    },
+    "hip": {
+      "title": "NSCA — Muscle Activation in Hip-Extensor Exercises",
+      "url": "https://www.nsca.com/education/articles/infographics/muscle-activation-in-hip-extensor-exercises/"
+    }
+  },
+  "exercises": [
+    {
+      "id": "e1000000-0000-0000-0000-000000000001",
+      "name": "Agachamento livre",
+      "muscleGroup": "Pernas",
+      "muscles": "Principais: quadríceps e glúteo máximo. O adutor magno auxilia na extensão do quadril. Abdômen e eretores da coluna estabilizam o tronco; glúteo médio ajuda no controle do quadril.",
+      "execution": "Com a barra apoiada nas costas, flexione quadris e joelhos e retorne com controle.",
+      "description": "Músculos trabalhados: Principais: quadríceps e glúteo máximo. O adutor magno auxilia na extensão do quadril. Abdômen e eretores da coluna estabilizam o tronco; glúteo médio ajuda no controle do quadril.\n\nExecução: Com a barra apoiada nas costas, flexione quadris e joelhos e retorne com controle.",
+      "sources": [
+        "squat"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000002",
+      "name": "Leg press",
+      "muscleGroup": "Pernas",
+      "muscles": "Principais: quadríceps e glúteo máximo. Os adutores participam do movimento; a contribuição de cada grupo varia com a amplitude e o posicionamento. Não é um exercício de isolamento dos posteriores da coxa.",
+      "execution": "Mantenha costas e quadril apoiados e mova a plataforma sem perder o controle.",
+      "description": "Músculos trabalhados: Principais: quadríceps e glúteo máximo. Os adutores participam do movimento; a contribuição de cada grupo varia com a amplitude e o posicionamento. Não é um exercício de isolamento dos posteriores da coxa.\n\nExecução: Mantenha costas e quadril apoiados e mova a plataforma sem perder o controle.",
+      "sources": [
+        "legpress"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000003",
+      "name": "Cadeira extensora",
+      "muscleGroup": "Pernas",
+      "muscles": "Principal: quadríceps femoral, formado por reto femoral, vasto lateral, vasto medial e vasto intermédio. Esses músculos estendem o joelho; os isquiotibiais não são o alvo principal.",
+      "execution": "Ajuste a máquina e estenda os joelhos de forma controlada.",
+      "description": "Músculos trabalhados: Principal: quadríceps femoral, formado por reto femoral, vasto lateral, vasto medial e vasto intermédio. Esses músculos estendem o joelho; os isquiotibiais não são o alvo principal.\n\nExecução: Ajuste a máquina e estenda os joelhos de forma controlada.",
+      "sources": [
+        "extension",
+        "squat"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000004",
+      "name": "Supino reto",
+      "muscleGroup": "Peito",
+      "muscles": "Principal: peitoral maior. Tríceps braquial e deltoide anterior auxiliam no movimento. O manguito rotador contribui para a estabilidade do ombro.",
+      "execution": "No banco horizontal, desça e empurre a barra com as costas apoiadas.",
+      "description": "Músculos trabalhados: Principal: peitoral maior. Tríceps braquial e deltoide anterior auxiliam no movimento. O manguito rotador contribui para a estabilidade do ombro.\n\nExecução: No banco horizontal, desça e empurre a barra com as costas apoiadas.",
+      "sources": [
+        "bench",
+        "shouldermechanics"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000005",
+      "name": "Remada curvada",
+      "muscleGroup": "Costas",
+      "muscles": "Principais: latíssimo do dorso (grande dorsal), romboides e trapézio médio. Deltoide posterior, bíceps braquial e braquial auxiliam. Eretores da coluna e abdômen estabilizam o tronco inclinado.",
+      "execution": "Incline o tronco com a coluna estável e puxe a barra em direção ao abdômen.",
+      "description": "Músculos trabalhados: Principais: latíssimo do dorso (grande dorsal), romboides e trapézio médio. Deltoide posterior, bíceps braquial e braquial auxiliam. Eretores da coluna e abdômen estabilizam o tronco inclinado.\n\nExecução: Incline o tronco com a coluna estável e puxe a barra em direção ao abdômen.",
+      "sources": [
+        "rows",
+        "seatedrow"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000006",
+      "name": "Puxada frontal",
+      "muscleGroup": "Costas",
+      "muscles": "Principal: latíssimo do dorso (grande dorsal). Redondo maior, bíceps braquial, braquial e braquiorradial auxiliam. Romboides e trapézio participam do controle das escápulas.",
+      "execution": "Traga a barra à frente, em direção à parte alta do peito, sem balançar o tronco.",
+      "description": "Músculos trabalhados: Principal: latíssimo do dorso (grande dorsal). Redondo maior, bíceps braquial, braquial e braquiorradial auxiliam. Romboides e trapézio participam do controle das escápulas.\n\nExecução: Traga a barra à frente, em direção à parte alta do peito, sem balançar o tronco.",
+      "sources": [
+        "pulldown"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000007",
+      "name": "Desenvolvimento com halteres",
+      "muscleGroup": "Ombros",
+      "muscles": "Principais: deltoide anterior e porção média do deltoide. Tríceps braquial auxilia na extensão dos cotovelos. Trapézio e serrátil anterior participam da rotação das escápulas; o manguito rotador estabiliza o ombro.",
+      "execution": "Eleve os halteres a partir da altura dos ombros e retorne com controle.",
+      "description": "Músculos trabalhados: Principais: deltoide anterior e porção média do deltoide. Tríceps braquial auxilia na extensão dos cotovelos. Trapézio e serrátil anterior participam da rotação das escápulas; o manguito rotador estabiliza o ombro.\n\nExecução: Eleve os halteres a partir da altura dos ombros e retorne com controle.",
+      "sources": [
+        "shoulders",
+        "shouldermechanics"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000008",
+      "name": "Rosca direta",
+      "muscleGroup": "Bíceps",
+      "muscles": "Principais: bíceps braquial e braquial, que flexionam o cotovelo. O braquiorradial também participa; a musculatura do antebraço estabiliza a pegada.",
+      "execution": "Com a pegada supinada na barra, flexione os cotovelos sem usar impulso do tronco.",
+      "description": "Músculos trabalhados: Principais: bíceps braquial e braquial, que flexionam o cotovelo. O braquiorradial também participa; a musculatura do antebraço estabiliza a pegada.\n\nExecução: Com a pegada supinada na barra, flexione os cotovelos sem usar impulso do tronco.",
+      "sources": [
+        "arms"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000009",
+      "name": "Tríceps na polia",
+      "muscleGroup": "Tríceps",
+      "muscles": "Principal: tríceps braquial, com participação das cabeças longa, lateral e medial na extensão do cotovelo. A pegada não transforma o exercício em isolamento de uma única cabeça.",
+      "execution": "Mantenha os braços próximos ao tronco e estenda os cotovelos contra a resistência da polia.",
+      "description": "Músculos trabalhados: Principal: tríceps braquial, com participação das cabeças longa, lateral e medial na extensão do cotovelo. A pegada não transforma o exercício em isolamento de uma única cabeça.\n\nExecução: Mantenha os braços próximos ao tronco e estenda os cotovelos contra a resistência da polia.",
+      "sources": [
+        "arms",
+        "extension"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000010",
+      "name": "Elevação de panturrilhas",
+      "muscleGroup": "Panturrilhas",
+      "muscles": "Principais: gastrocnêmios medial e lateral e sóleo, responsáveis pela flexão plantar do tornozelo. Esta descrição corresponde à execução em pé, com os joelhos estendidos.",
+      "execution": "Com apoio para equilíbrio, eleve e abaixe os calcanhares de forma controlada.",
+      "description": "Músculos trabalhados: Principais: gastrocnêmios medial e lateral e sóleo, responsáveis pela flexão plantar do tornozelo. Esta descrição corresponde à execução em pé, com os joelhos estendidos.\n\nExecução: Com apoio para equilíbrio, eleve e abaixe os calcanhares de forma controlada.",
+      "sources": [
+        "calf",
+        "seatedcalf"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000011",
+      "name": "Crucifixo com halteres",
+      "muscleGroup": "Peito",
+      "muscles": "Principal: peitoral maior, na aproximação dos braços à frente do tórax. O deltoide anterior auxilia e o manguito rotador estabiliza o ombro. O tríceps não é o motor principal dessa variação.",
+      "execution": "Deitado no banco, abra e aproxime os braços mantendo leve flexão dos cotovelos.",
+      "description": "Músculos trabalhados: Principal: peitoral maior, na aproximação dos braços à frente do tórax. O deltoide anterior auxilia e o manguito rotador estabiliza o ombro. O tríceps não é o motor principal dessa variação.\n\nExecução: Deitado no banco, abra e aproxime os braços mantendo leve flexão dos cotovelos.",
+      "sources": [
+        "fly",
+        "chest",
+        "shouldermechanics"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000012",
+      "name": "Elevação lateral",
+      "muscleGroup": "Ombros",
+      "muscles": "Principal: porção média do deltoide. O supraespinal auxilia na abdução do braço. Trapézio e serrátil anterior participam da rotação das escápulas. Não é um movimento voltado principalmente ao deltoide posterior.",
+      "execution": "Eleve os braços para os lados com controle e sem impulso do tronco.",
+      "description": "Músculos trabalhados: Principal: porção média do deltoide. O supraespinal auxilia na abdução do braço. Trapézio e serrátil anterior participam da rotação das escápulas. Não é um movimento voltado principalmente ao deltoide posterior.\n\nExecução: Eleve os braços para os lados com controle e sem impulso do tronco.",
+      "sources": [
+        "shoulders",
+        "shouldermechanics"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000013",
+      "name": "Supino inclinado",
+      "muscleGroup": "Peito",
+      "muscles": "Principal: peitoral maior, com maior ênfase relativa na porção clavicular (parte superior do peito). Deltoide anterior e tríceps braquial auxiliam. A inclinação modifica a ênfase, sem isolar uma região do peito.",
+      "execution": "Com as costas no banco inclinado, desça e empurre a barra de forma controlada.",
+      "description": "Músculos trabalhados: Principal: peitoral maior, com maior ênfase relativa na porção clavicular (parte superior do peito). Deltoide anterior e tríceps braquial auxiliam. A inclinação modifica a ênfase, sem isolar uma região do peito.\n\nExecução: Com as costas no banco inclinado, desça e empurre a barra de forma controlada.",
+      "sources": [
+        "incline"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000014",
+      "name": "Supino com halteres",
+      "muscleGroup": "Peito",
+      "muscles": "Principal: peitoral maior. Tríceps braquial e deltoide anterior auxiliam; o manguito rotador contribui para a estabilidade dos ombros. A descrição considera o banco horizontal.",
+      "execution": "Com as costas apoiadas no banco horizontal, desça e empurre os halteres com controle.",
+      "description": "Músculos trabalhados: Principal: peitoral maior. Tríceps braquial e deltoide anterior auxiliam; o manguito rotador contribui para a estabilidade dos ombros. A descrição considera o banco horizontal.\n\nExecução: Com as costas apoiadas no banco horizontal, desça e empurre os halteres com controle.",
+      "sources": [
+        "chest",
+        "bench",
+        "shouldermechanics"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000015",
+      "name": "Flexão de braços",
+      "muscleGroup": "Peito",
+      "muscles": "Principais: peitoral maior, tríceps braquial e deltoide anterior. O serrátil anterior participa do controle das escápulas; abdômen e glúteos ajudam a manter o alinhamento do corpo.",
+      "execution": "Flexione e estenda os braços mantendo o corpo alinhado.",
+      "description": "Músculos trabalhados: Principais: peitoral maior, tríceps braquial e deltoide anterior. O serrátil anterior participa do controle das escápulas; abdômen e glúteos ajudam a manter o alinhamento do corpo.\n\nExecução: Flexione e estenda os braços mantendo o corpo alinhado.",
+      "sources": [
+        "pushup",
+        "shouldermechanics"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000016",
+      "name": "Remada baixa",
+      "muscleGroup": "Costas",
+      "muscles": "Principais: latíssimo do dorso (grande dorsal), romboides e trapézio médio. Deltoide posterior, bíceps braquial e braquial auxiliam. A pegada e a trajetória dos cotovelos alteram a ênfase.",
+      "execution": "Sentado na polia baixa, puxe o cabo em direção ao tronco sem usar balanço.",
+      "description": "Músculos trabalhados: Principais: latíssimo do dorso (grande dorsal), romboides e trapézio médio. Deltoide posterior, bíceps braquial e braquial auxiliam. A pegada e a trajetória dos cotovelos alteram a ênfase.\n\nExecução: Sentado na polia baixa, puxe o cabo em direção ao tronco sem usar balanço.",
+      "sources": [
+        "rows",
+        "seatedrow"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000017",
+      "name": "Remada unilateral",
+      "muscleGroup": "Costas",
+      "muscles": "Principais: latíssimo do dorso (grande dorsal), romboides e trapézio médio. Deltoide posterior e flexores do cotovelo auxiliam; o abdômen ajuda a resistir à rotação do tronco.",
+      "execution": "Com apoio no banco, puxe um halter de cada vez sem girar o tronco.",
+      "description": "Músculos trabalhados: Principais: latíssimo do dorso (grande dorsal), romboides e trapézio médio. Deltoide posterior e flexores do cotovelo auxiliam; o abdômen ajuda a resistir à rotação do tronco.\n\nExecução: Com apoio no banco, puxe um halter de cada vez sem girar o tronco.",
+      "sources": [
+        "rows",
+        "seatedrow"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000018",
+      "name": "Barra fixa",
+      "muscleGroup": "Costas",
+      "muscles": "Principal: latíssimo do dorso (grande dorsal). Bíceps braquial, braquial e braquiorradial auxiliam na flexão dos cotovelos. Romboides e trapézio controlam as escápulas; o abdômen estabiliza o corpo.",
+      "execution": "Na barra, eleve e abaixe o corpo com controle, sem balanço.",
+      "description": "Músculos trabalhados: Principal: latíssimo do dorso (grande dorsal). Bíceps braquial, braquial e braquiorradial auxiliam na flexão dos cotovelos. Romboides e trapézio controlam as escápulas; o abdômen estabiliza o corpo.\n\nExecução: Na barra, eleve e abaixe o corpo com controle, sem balanço.",
+      "sources": [
+        "pullup",
+        "pulldown"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000019",
+      "name": "Levantamento terra",
+      "muscleGroup": "Pernas e costas",
+      "muscles": "Principais: glúteo máximo, quadríceps e isquiotibiais. Eretores da coluna e abdômen estabilizam o tronco; latíssimo do dorso, trapézio e músculos da pegada também participam. A descrição considera o terra convencional com barra.",
+      "execution": "Retire a barra do chão estendendo quadris e joelhos, mantendo-a próxima ao corpo.",
+      "description": "Músculos trabalhados: Principais: glúteo máximo, quadríceps e isquiotibiais. Eretores da coluna e abdômen estabilizam o tronco; latíssimo do dorso, trapézio e músculos da pegada também participam. A descrição considera o terra convencional com barra.\n\nExecução: Retire a barra do chão estendendo quadris e joelhos, mantendo-a próxima ao corpo.",
+      "sources": [
+        "deadlift"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000020",
+      "name": "Levantamento terra romeno",
+      "muscleGroup": "Posteriores de coxa",
+      "muscles": "Principais: glúteo máximo e isquiotibiais que cruzam o quadril: semitendíneo, semimembranáceo e cabeça longa do bíceps femoral. Eretores da coluna e abdômen estabilizam o tronco; o adutor magno auxilia na extensão do quadril.",
+      "execution": "Partindo em pé, leve o quadril para trás com leve flexão dos joelhos e retorne com controle.",
+      "description": "Músculos trabalhados: Principais: glúteo máximo e isquiotibiais que cruzam o quadril: semitendíneo, semimembranáceo e cabeça longa do bíceps femoral. Eretores da coluna e abdômen estabilizam o tronco; o adutor magno auxilia na extensão do quadril.\n\nExecução: Partindo em pé, leve o quadril para trás com leve flexão dos joelhos e retorne com controle.",
+      "sources": [
+        "rdl"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000021",
+      "name": "Mesa flexora",
+      "muscleGroup": "Posteriores de coxa",
+      "muscles": "Principais: isquiotibiais (bíceps femoral, semitendíneo e semimembranáceo), na flexão do joelho. Os gastrocnêmios também podem auxiliar; quadríceps e glúteos não são os alvos principais.",
+      "execution": "Deitado de barriga para baixo, flexione os joelhos mantendo o quadril apoiado.",
+      "description": "Músculos trabalhados: Principais: isquiotibiais (bíceps femoral, semitendíneo e semimembranáceo), na flexão do joelho. Os gastrocnêmios também podem auxiliar; quadríceps e glúteos não são os alvos principais.\n\nExecução: Deitado de barriga para baixo, flexione os joelhos mantendo o quadril apoiado.",
+      "sources": [
+        "lyingcurl"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000022",
+      "name": "Cadeira flexora",
+      "muscleGroup": "Posteriores de coxa",
+      "muscles": "Principais: isquiotibiais (bíceps femoral, semitendíneo e semimembranáceo), na flexão do joelho. Os gastrocnêmios podem auxiliar. A posição sentada mantém o quadril flexionado, diferenciando esta variação da mesa flexora.",
+      "execution": "Sentado com as costas apoiadas, flexione os joelhos contra a resistência da máquina.",
+      "description": "Músculos trabalhados: Principais: isquiotibiais (bíceps femoral, semitendíneo e semimembranáceo), na flexão do joelho. Os gastrocnêmios podem auxiliar. A posição sentada mantém o quadril flexionado, diferenciando esta variação da mesa flexora.\n\nExecução: Sentado com as costas apoiadas, flexione os joelhos contra a resistência da máquina.",
+      "sources": [
+        "seatedcurl"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000023",
+      "name": "Afundo com deslocamento",
+      "muscleGroup": "Pernas",
+      "muscles": "Principais: quadríceps e glúteo máximo. Isquiotibiais e adutores participam; glúteo médio, panturrilhas e musculatura do tronco ajudam no equilíbrio. O comprimento do passo e a inclinação do tronco alteram a ênfase.",
+      "execution": "Avance alternando as pernas, flexionando e estendendo quadris e joelhos com controle.",
+      "description": "Músculos trabalhados: Principais: quadríceps e glúteo máximo. Isquiotibiais e adutores participam; glúteo médio, panturrilhas e musculatura do tronco ajudam no equilíbrio. O comprimento do passo e a inclinação do tronco alteram a ênfase.\n\nExecução: Avance alternando as pernas, flexionando e estendendo quadris e joelhos com controle.",
+      "sources": [
+        "lunge",
+        "squat"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000024",
+      "name": "Agachamento búlgaro",
+      "muscleGroup": "Pernas",
+      "muscles": "Principais: quadríceps e glúteo máximo da perna da frente. Adutores e isquiotibiais auxiliam; glúteo médio e musculatura do tronco contribuem para o equilíbrio. A posição dos pés e do tronco modifica a ênfase.",
+      "execution": "Apoie o pé de trás no banco e flexione a perna da frente com controle.",
+      "description": "Músculos trabalhados: Principais: quadríceps e glúteo máximo da perna da frente. Adutores e isquiotibiais auxiliam; glúteo médio e musculatura do tronco contribuem para o equilíbrio. A posição dos pés e do tronco modifica a ênfase.\n\nExecução: Apoie o pé de trás no banco e flexione a perna da frente com controle.",
+      "sources": [
+        "bulgarian",
+        "lunge"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000025",
+      "name": "Elevação pélvica",
+      "muscleGroup": "Glúteos",
+      "muscles": "Principal: glúteo máximo, na extensão do quadril. Isquiotibiais e adutor magno podem auxiliar; abdômen e eretores da coluna estabilizam o tronco. Não é uma extensão da coluna lombar.",
+      "execution": "Com a parte alta das costas apoiada no banco, eleve e abaixe o quadril com controle.",
+      "description": "Músculos trabalhados: Principal: glúteo máximo, na extensão do quadril. Isquiotibiais e adutor magno podem auxiliar; abdômen e eretores da coluna estabilizam o tronco. Não é uma extensão da coluna lombar.\n\nExecução: Com a parte alta das costas apoiada no banco, eleve e abaixe o quadril com controle.",
+      "sources": [
+        "hip",
+        "rdl"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000026",
+      "name": "Panturrilha sentado",
+      "muscleGroup": "Panturrilhas",
+      "muscles": "Principal ênfase: sóleo. Os gastrocnêmios também participam, mas a flexão dos joelhos reduz sua contribuição em comparação com a versão em pé. O sóleo não é isolado e também trabalha na versão em pé.",
+      "execution": "Sentado com os joelhos flexionados e apoiados, eleve e abaixe os calcanhares.",
+      "description": "Músculos trabalhados: Principal ênfase: sóleo. Os gastrocnêmios também participam, mas a flexão dos joelhos reduz sua contribuição em comparação com a versão em pé. O sóleo não é isolado e também trabalha na versão em pé.\n\nExecução: Sentado com os joelhos flexionados e apoiados, eleve e abaixe os calcanhares.",
+      "sources": [
+        "seatedcalf",
+        "kneeflexion"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000027",
+      "name": "Rosca martelo",
+      "muscleGroup": "Braços e antebraços",
+      "muscles": "Músculos envolvidos: braquial, braquiorradial e bíceps braquial, na flexão do cotovelo com pegada neutra. Não é um exercício exclusivo do bíceps nem permite isolar um único flexor do cotovelo.",
+      "execution": "Flexione os cotovelos mantendo as palmas voltadas uma para a outra.",
+      "description": "Músculos trabalhados: Músculos envolvidos: braquial, braquiorradial e bíceps braquial, na flexão do cotovelo com pegada neutra. Não é um exercício exclusivo do bíceps nem permite isolar um único flexor do cotovelo.\n\nExecução: Flexione os cotovelos mantendo as palmas voltadas uma para a outra.",
+      "sources": [
+        "arms"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000028",
+      "name": "Rosca Scott",
+      "muscleGroup": "Bíceps",
+      "muscles": "Principais: bíceps braquial e braquial. O braquiorradial também pode auxiliar. O apoio dos braços modifica a posição do ombro, mas não isola uma única cabeça do bíceps.",
+      "execution": "Com os braços apoiados no banco Scott e pegada supinada, flexione os cotovelos com controle.",
+      "description": "Músculos trabalhados: Principais: bíceps braquial e braquial. O braquiorradial também pode auxiliar. O apoio dos braços modifica a posição do ombro, mas não isola uma única cabeça do bíceps.\n\nExecução: Com os braços apoiados no banco Scott e pegada supinada, flexione os cotovelos com controle.",
+      "sources": [
+        "arms"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000029",
+      "name": "Tríceps testa",
+      "muscleGroup": "Tríceps",
+      "muscles": "Principal: tríceps braquial, incluindo as cabeças longa, lateral e medial, na extensão do cotovelo. O posicionamento do braço altera o comprimento da cabeça longa; não há isolamento completo de uma única cabeça.",
+      "execution": "Deitado no banco, flexione e estenda os cotovelos mantendo os braços estáveis.",
+      "description": "Músculos trabalhados: Principal: tríceps braquial, incluindo as cabeças longa, lateral e medial, na extensão do cotovelo. O posicionamento do braço altera o comprimento da cabeça longa; não há isolamento completo de uma única cabeça.\n\nExecução: Deitado no banco, flexione e estenda os cotovelos mantendo os braços estáveis.",
+      "sources": [
+        "arms",
+        "extension"
+      ]
+    },
+    {
+      "id": "e1000000-0000-0000-0000-000000000030",
+      "name": "Elevação frontal",
+      "muscleGroup": "Ombros",
+      "muscles": "Principal: deltoide anterior. A porção clavicular do peitoral maior auxilia na flexão do ombro. Trapézio e serrátil anterior participam do controle das escápulas. Difere da elevação lateral, que enfatiza a porção média do deltoide.",
+      "execution": "Eleve os halteres à frente com controle e sem balançar o tronco.",
+      "description": "Músculos trabalhados: Principal: deltoide anterior. A porção clavicular do peitoral maior auxilia na flexão do ombro. Trapézio e serrátil anterior participam do controle das escápulas. Difere da elevação lateral, que enfatiza a porção média do deltoide.\n\nExecução: Eleve os halteres à frente com controle e sem balançar o tronco.",
+      "sources": [
+        "shoulders",
+        "shouldermechanics",
+        "incline"
+      ]
+    }
+  ]
+}
