@@ -8,6 +8,7 @@ public static class AuthEndpoints
     public static void MapAccountEndpoints(this WebApplication app)
     {
         var accounts = app.MapGroup("/auth");
+        StudentProfileEndpoints.Map(accounts);
         accounts.MapPost("/register", async (RegisterRequest request, AuthService auth, CancellationToken cancellationToken) =>
         {
             var errors = Validate(request.Email, request.Password, registration: true);

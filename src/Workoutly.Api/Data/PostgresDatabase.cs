@@ -4,7 +4,7 @@ namespace Workoutly.Api.Data;
 
 public sealed class PostgresDatabase(IConfiguration configuration)
 {
-    public const int CurrentSchemaVersion = 11;
+    public const int CurrentSchemaVersion = 12;
     private string? ConnectionString => configuration.GetConnectionString("Workoutly") is { Length: > 0 } value
         ? value : configuration["DATABASE_URL"];
     public bool IsConfigured => !string.IsNullOrWhiteSpace(ConnectionString);
@@ -44,6 +44,7 @@ public sealed class PostgresDatabase(IConfiguration configuration)
         await command.ExecuteNonQueryAsync(cancellationToken);
         command.CommandText = "SELECT to_regclass('public.schema_migrations') IS NOT NULL";
         var existing = (bool)(await command.ExecuteScalarAsync(cancellationToken))!;
+        var schemaVersion = 0;
         if (existing)
         {
             command.CommandText = "SELECT MAX(version) FROM schema_migrations";
@@ -53,13 +54,16 @@ public sealed class PostgresDatabase(IConfiguration configuration)
                 await transaction.CommitAsync(cancellationToken);
                 return;
             }
-            if (version is not (9 or 10))
+            if (version is not int previousVersion || previousVersion is not (9 or 10 or 11))
                 throw new InvalidOperationException("Esquema existente incompleto ou incompatível. Confira as migrações antes de continuar.");
+            schemaVersion = previousVersion;
         }
         var assembly = typeof(PostgresDatabase).Assembly;
         foreach (var resource in assembly.GetManifestResourceNames()
             .Where(name => name.StartsWith("Workoutly.Api.Data.Migrations.") && name.EndsWith(".sql"))
-            .Where(name => !existing || name.EndsWith(".11_carga_sugerida.sql", StringComparison.Ordinal))
+            .Where(name => !existing ||
+                (schemaVersion < 11 && name.EndsWith(".11_carga_sugerida.sql", StringComparison.Ordinal)) ||
+                name.EndsWith(".12_perfil_aluno.sql", StringComparison.Ordinal))
             .Order(StringComparer.Ordinal))
         {
             await using var stream = assembly.GetManifestResourceStream(resource)!;
@@ -67,6 +71,9 @@ public sealed class PostgresDatabase(IConfiguration configuration)
             command.CommandText = await reader.ReadToEndAsync(cancellationToken);
             await command.ExecuteNonQueryAsync(cancellationToken);
         }
+        command.CommandText = "SELECT COUNT(*) = 2 FROM schema_migrations WHERE version IN (11, 12)";
+        if (await command.ExecuteScalarAsync(cancellationToken) is not true)
+            throw new InvalidOperationException("As migrações 11 e 12 precisam estar incluídas na publicação.");
         await transaction.CommitAsync(cancellationToken);
     }
 

@@ -39,7 +39,7 @@ public sealed class PostgresBootstrapTests : IClassFixture<PostgresFixture>
         Assert.NotNull(body);
         Assert.Equal("ready", body.Status);
         Assert.Equal("ready", body.Database);
-        Assert.Equal(11, body.SchemaVersion);
+        Assert.Equal(12, body.SchemaVersion);
     }
 
     private sealed record ReadinessBody(string Status, string Database, int? SchemaVersion);
