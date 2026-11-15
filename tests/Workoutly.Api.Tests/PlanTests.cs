@@ -156,6 +156,49 @@ public sealed class PlanTests(PostgresFixture mysql) : IClassFixture<PostgresFix
         Assert.Equal(2, (await student.GetFromJsonAsync<PlanBody>($"/plans/{id}"))!.Version);
     }
 
+    [PostgresFact, Trait("Category", "Postgres")]
+    public async Task Plan_details_return_the_latest_performed_weight_separately_from_the_prescription()
+    {
+        await using var app = new DatabaseApplication(mysql.ConnectionString);
+        await app.Services.GetRequiredService<PostgresDatabase>().MigrateAsync();
+        using var student = await Student(app);
+        using var other = await Student(app);
+        var exerciseId = (await student.GetFromJsonAsync<ExerciseBody[]>("/exercises"))![0].Id;
+        var id = Guid.NewGuid();
+        var path = $"/plans/{id}";
+        object Item(decimal? suggestedWeightKg) => new { exerciseId, sets = 3, repetitions = 10, suggestedWeightKg };
+        object Declarations(decimal? suggestedWeightKg) => new { id, name = "Ficha de carga", exercises = new[] { Item(suggestedWeightKg) } };
+        Assert.Equal(HttpStatusCode.BadRequest, (await student.PostAsJsonAsync("/plans", Declarations(22.501m))).StatusCode);
+        Assert.Equal(HttpStatusCode.Created, (await student.PostAsJsonAsync("/plans", Declarations(20m))).StatusCode);
+        Assert.Equal(HttpStatusCode.Conflict, (await student.PostAsJsonAsync("/plans", Declarations(25m))).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await other.GetAsync(path)).StatusCode);
+
+        var initial = Assert.Single((await student.GetFromJsonAsync<PlanBody>(path))!.Exercises);
+        Assert.Equal(20m, initial.SuggestedWeightKg);
+        Assert.Null(initial.LastUsedWeightKg);
+        foreach (var (minutesAgo, lastWeight) in new[] { (30, 22.5m), (90, 99m) })
+        {
+            (await student.PostAsJsonAsync("/sessions", new
+            {
+                id = Guid.NewGuid(), planId = id, planVersion = 1, startedAt = DateTimeOffset.UtcNow.AddMinutes(-minutesAgo), durationSeconds = 60,
+                exercises = new[] { new { exerciseId, sets = new[] { new { repetitions = 10, weightKg = 25m }, new { repetitions = 8, weightKg = lastWeight } } } }
+            })).EnsureSuccessStatusCode();
+        }
+        var latest = Assert.Single((await student.GetFromJsonAsync<PlanBody>(path))!.Exercises);
+        Assert.Equal(20m, latest.SuggestedWeightKg);
+        Assert.Equal(22.5m, latest.LastUsedWeightKg);
+
+        (await student.PutAsJsonAsync(path, new { version = 1, name = "Cliente anterior", exercises = new[] { new { exerciseId, sets = 3, repetitions = 12 } } })).EnsureSuccessStatusCode();
+        Assert.Equal(20m, Assert.Single((await student.GetFromJsonAsync<PlanBody>(path))!.Exercises).SuggestedWeightKg);
+        (await student.PutAsJsonAsync(path, new { version = 2, name = "Carga removida", exercises = new[] { Item(null) } })).EnsureSuccessStatusCode();
+        var current = Assert.Single((await student.GetFromJsonAsync<PlanBody>(path))!.Exercises);
+        Assert.Null(current.SuggestedWeightKg);
+        Assert.Equal(22.5m, current.LastUsedWeightKg);
+        var historical = Assert.Single((await student.GetFromJsonAsync<PlanBody>($"{path}?version=1"))!.Exercises);
+        Assert.Equal(20m, historical.SuggestedWeightKg);
+        Assert.Null(historical.LastUsedWeightKg);
+    }
+
     private sealed record InvitationBody(string Code);
 
     private static async Task<HttpClient> Student(DatabaseApplication app)
@@ -168,6 +211,7 @@ public sealed class PlanTests(PostgresFixture mysql) : IClassFixture<PostgresFix
 
     private sealed record SessionBody(string AccessToken, AccountProfile User);
     private sealed record ExerciseBody(string Id, string Name);
-    private sealed record ItemBody(string ExerciseId, string Name, string MuscleGroup, string Equipment, string Description, int Sets, int Repetitions);
+    private sealed record ItemBody(string ExerciseId, string Name, string MuscleGroup, string Equipment, string Description, int Sets, int Repetitions,
+        decimal? SuggestedWeightKg, decimal? LastUsedWeightKg);
     private sealed record PlanBody(string Id, string StudentId, string Name, string Notes, int Version, ItemBody[] Exercises);
 }

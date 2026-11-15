@@ -64,6 +64,8 @@ public static class PlanEndpoints
         if (notes?.Trim().Length > 1000) errors["notes"] = ["Use até 1000 caracteres nas observações."];
         if (exercises is null || exercises.Length is < 1 or > 50 || exercises.Any(e => e is null || e.ExerciseId == Guid.Empty || e.Sets is < 1 or > 20 || e.Repetitions is < 1 or > 200) || exercises.Select(e => e.ExerciseId).Distinct().Count() != exercises.Length)
             errors["exercises"] = ["Inclua de 1 a 50 exercícios distintos, com 1 a 20 séries e 1 a 200 repetições cada."];
+        if (exercises?.Any(e => e?.SuggestedWeightKg is decimal weight && (weight is < 0 or > 2000 || decimal.Round(weight, 2) != weight)) == true)
+            errors["suggestedWeightKg"] = ["Use uma carga de 0 a 2000 kg, com até duas casas decimais."];
         return errors;
     }
     public sealed record CreatePlanRequest(Guid Id, string? Name, string? Notes, PlanExerciseRequest[]? Exercises);

@@ -4,7 +4,7 @@ namespace Workoutly.Api.Data;
 
 public sealed class PostgresDatabase(IConfiguration configuration)
 {
-    public const int CurrentSchemaVersion = 9;
+    public const int CurrentSchemaVersion = 11;
     private string? ConnectionString => configuration.GetConnectionString("Workoutly") is { Length: > 0 } value
         ? value : configuration["DATABASE_URL"];
     public bool IsConfigured => !string.IsNullOrWhiteSpace(ConnectionString);
@@ -33,7 +33,7 @@ public sealed class PostgresDatabase(IConfiguration configuration)
     }
 
     // Somente --migrate: não altera banco automaticamente no startup.
-    // O banco versão 9 já preparado pelo pgAdmin é aceito sem reescrever dados.
+    // Um banco já preparado recebe apenas a migração incremental.
     public async Task MigrateAsync(CancellationToken cancellationToken = default)
     {
         await using var connection = await OpenConnectionAsync(cancellationToken);
@@ -43,18 +43,23 @@ public sealed class PostgresDatabase(IConfiguration configuration)
         command.CommandText = "SELECT pg_advisory_xact_lock(17412026)";
         await command.ExecuteNonQueryAsync(cancellationToken);
         command.CommandText = "SELECT to_regclass('public.schema_migrations') IS NOT NULL";
-        if ((bool)(await command.ExecuteScalarAsync(cancellationToken))!)
+        var existing = (bool)(await command.ExecuteScalarAsync(cancellationToken))!;
+        if (existing)
         {
             command.CommandText = "SELECT MAX(version) FROM schema_migrations";
             var version = await command.ExecuteScalarAsync(cancellationToken);
-            if (version is not int number || number != CurrentSchemaVersion)
+            if (version is int number && number == CurrentSchemaVersion)
+            {
+                await transaction.CommitAsync(cancellationToken);
+                return;
+            }
+            if (version is not (9 or 10))
                 throw new InvalidOperationException("Esquema existente incompleto ou incompatível. Confira as migrações antes de continuar.");
-            await transaction.CommitAsync(cancellationToken);
-            return;
         }
         var assembly = typeof(PostgresDatabase).Assembly;
         foreach (var resource in assembly.GetManifestResourceNames()
             .Where(name => name.StartsWith("Workoutly.Api.Data.Migrations.") && name.EndsWith(".sql"))
+            .Where(name => !existing || name.EndsWith(".11_carga_sugerida.sql", StringComparison.Ordinal))
             .Order(StringComparer.Ordinal))
         {
             await using var stream = assembly.GetManifestResourceStream(resource)!;

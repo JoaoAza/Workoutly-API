@@ -92,12 +92,13 @@ public sealed class WorkoutService(PostgresDatabase database)
         }
         if (session is not null)
         {
-            command.CommandText = "SELECT exercise_id,name,muscle_group,equipment,description,set_count,repetitions FROM workout_plan_items WHERE plan_id=@plan AND version=@version ORDER BY position";
+            command.CommandText = "SELECT exercise_id,name,muscle_group,equipment,description,set_count,repetitions,suggested_weight_kg FROM workout_plan_items WHERE plan_id=@plan AND version=@version ORDER BY position";
             command.Parameters.AddUuid("@plan", session.PlanId);
             command.Parameters.AddWithValue("@version", session.PlanVersion);
             await using var reader = await command.ExecuteReaderAsync(ct);
             while (await reader.ReadAsync(ct))
-                session.PlanExercises.Add(new(reader.GetGuid(0).ToString(), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6)));
+                session.PlanExercises.Add(new(reader.GetGuid(0).ToString(), reader.GetString(1), reader.GetString(2), reader.GetString(3),
+                    reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6), reader.IsDBNull(7) ? null : reader.GetDecimal(7)));
         }
         return session;
     }
